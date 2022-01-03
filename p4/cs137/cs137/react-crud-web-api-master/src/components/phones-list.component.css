@@ -1,0 +1,44 @@
+input {
+
+}
+
+input:hover {
+    background-color: lightblue;
+
+}
+
+link{
+    font-size: 30px;
+}
+
+label {
+
+}
+
+#border-box {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+li {
+    font-size: 20px;
+}
+
+li:hover {
+    background-color: lightblue;
+}
+
+strong {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 40px;
+    color: darkred;
+}
+
+#click-message {
+    font-size: 25px;
+    color: darkred;
+}

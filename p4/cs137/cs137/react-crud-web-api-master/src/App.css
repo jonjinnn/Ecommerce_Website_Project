@@ -1,0 +1,41 @@
+#logo-bar {
+  text-align:center;
+  font-size: 50px;
+  background-color: darkgray;
+}
+
+#top_nav{
+  background-color: darkgray;
+  overflow: hidden;
+}
+#top_nav a{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+  display: block;
+}
+#top_nav a:hover {
+  color: lightblue;
+}
+#top_nav a.active {
+  background-color: lightblue;
+  color: black;
+}
+
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}

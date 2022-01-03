@@ -1,0 +1,170 @@
+<!-- This page will be seen if you logged in -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="cart_style.css">
+    <script src="https://kit.fontawesome.com/9379a64fd1.js" crossorigin="anonymous"></script>
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script type='text/javascript' src='cart.js'></script>
+    <title>Cart page</title>
+</head>
+<body>
+<!--top logo bar-->
+<div id="logo-bar">
+    <div id="title">G11 eCommerce</div>
+</div>
+
+<!--    top navigation bar-->
+<div class="top_nav">
+    <a href="index.jsp">Products</a>
+    <a href="team.html">Team</a>
+    <a href="about.html">About</a>
+    <a style="float: right" href="view_ordered.jsp">View ordered</a>
+    <a style="float: right" class="active" href="cart.html">Checkout</a>
+</div>
+
+<!-- Cart table -->
+<div class="container_payment">
+    <h1 style="text-align: center;">Shopping Cart</h1>
+    <p id ="welcome"> </p>
+
+    <table id=cart_table >
+        <!-- Create a table header -->
+        <thead>
+        <tr style="background-color:#abcfe094;">
+            <!-- Titles of each column-->
+            <th>Id</th>
+            <th>Model</th>
+            <th>Memory</th>
+            <th>Color</th>
+            <th>Unit Price</th>
+            <th>Qty</th>
+        </tr>
+        </thead>
+
+        <tbody id=item_list_body>
+
+        </tbody>
+    </table>
+    <div class="container">
+        <form class="form" id="checkout_form" action = "#" method="POST">
+            <div class="grid-container">
+                <!-- Delivery Options -->
+                <div class="grid-1">
+                    <div class="header">
+                        <h3>Delivery Option</h3> <!--Header-->
+                    </div>
+
+                    <div class="form-control">
+                        <label class="radio_input">$5.95 - Standard Shipping
+                            <input type="radio" name="delivery" id="choice1" value="$5.95 - Standard Shipping" onchange="price_update();"/>
+                            <span class="checkmark"></span></label> <br>
+
+                        <label class="radio_input">$10.95 - 2-days Expedited
+                            <input type="radio" name="delivery" id="choice2" value="$10.95 - 2-days Expedited" onchange="price_update();"/>
+                            <span class="checkmark"></span></label> <br>
+
+                        <label class="radio_input">$16.95 - Priority Overnight
+                            <input type="radio" name="delivery" id="choice3" value="$16.95 - Priority Overnight" onchange="price_update();"/>
+                            <span class="checkmark"></span> </label> <br>
+
+                        <label class="radio_input">$6.95 - USPS Priority
+                            <input type="radio" name="delivery" id="choice4" value="$6.95 - USPS Priority" onchange="price_update();"/>
+                            <span class="checkmark"></span> </label> <br>
+                    </div>
+                </div>
+
+                <!--Payment -->
+                <div class="grid-2">
+                    <div class="header">
+                        <h3>Payment</h3> <!--Header -->
+                    </div>
+                    <div id="error_card" style="text-align: center; color: red"></div>
+                    <div class="form-control">
+                        <label>Accepted Cards</label>
+                        <div id = "icon">
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+
+                        <label>Full Name on Card: </label>
+                        <input type="text" id="name" name="name" placeholder="name on card" required="required"/> <br>
+
+                        <label>Card number: </label>
+                        <input type="text" id="num" name="num" placeholder="XXXX-XXXX-XXXX-XXXX"
+                               pattern="^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+                               title="Please input in format XXXX-XXXX-XXXX-XXXX" required/> <br>
+
+                        <label>Expired: </label>
+                        <input type="text" id="exp" name="exp" placeholder="MM/YY" pattern="^[0|1][0-9][/][0-9]{2}$" required title="Please input with format MM/YY"/> <br>
+                        <label>CCV:</label>
+                        <input type="text" id="ccv" name="cvv" placeholder="012" pattern="^[0-9]{3}$" required title="Please input with three CCV number"/> <br>
+
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="grid-3">
+                    <div class="header">
+                        <h3>Contact Information</h3>
+                    </div>
+                    <div id="error_info" style="text-align: center; color: red"></div>
+                    <!--First Name, Last name, email, phone number-->
+                    <div class="form-control">
+                        <label>First Name:</label>
+                        <input type="text" id = "firstname" name="firstname" placeholder="Enter first name" required/> <br>
+
+                        <label>Last Name:</label>
+                        <input type="text" id = "lastname" name="lastname" placeholder="Enter last name" required/> <br>
+
+                        <label>Email:</label>
+                        <input type="email" id ="email" name="email" placeholder="example@gmail.com"
+                               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Not a valid email" required/> <br>
+
+                        <label>Phone number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="1234566789"
+                               pattern="^[0-9]{10}$" title="input 10 digit phone number" required/> <br>
+                    </div>
+                </div>
+
+                <!-- shipping address  -->
+                <div class="grid-4">
+                    <div class="header">
+                        <h3>Shipping Address</h3> <!--Header-->
+                    </div>
+                    <div class="form-control">
+                        <label>Address:</label>
+                        <input type="text" id = "address" name="address" placeholder="204 Aldrich Hall" required/> <br>
+
+                        <label>Apt:</label>
+                        <input type="text" id="apt" name="apt" placeholder="#000" /> <br>
+
+                        <label>City:</label>
+                        <input type="text" id="city" name="city" placeholder="Irvine" required/> <br>
+
+                        <label>State:</label>
+                        <input type="text" id="state" name="state" placeholder="CA" required/>
+
+                        <label>Zip:</label>
+                        <input type="text" id="zip" name="zip" placeholder="00000" pattern="^[0-9]+$" maxlength="5" onblur="getTax(this.value)" required/>
+
+                    </div>
+                </div>
+
+                <div class="grid-5">
+                    <div class="form-control">
+                        <div id="error_message" style="text-align: left; color: #ff0000"></div>
+                        <input type = 'submit' value="Place Order" id = "place_order">
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
