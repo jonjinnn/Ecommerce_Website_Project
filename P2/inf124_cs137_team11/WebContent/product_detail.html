@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="product_detail.css" />
+    <script src="https://code.jQuery.com/jQuery-3.6.0.min.js"></script>
+
+    <title>detailed Desciption page</title>
+  </head>
+
+  <body>
+    <!--top logo bar-->
+    <div id="logo-bar">
+      <div id="title">G11 eCommerce</div>
+    </div>
+
+    <!--top navigation bar-->
+    <div class="top_nav">
+      <a class="active" href="index.html">Products</a>
+      <a href="team.html">Team</a>
+      <a href="about.html">About</a>
+      <a style="float: right" href="view_ordered.html">View ordered</a>
+      <a style="float: right" href="cart.html">Checkout</a>
+    </div>
+
+    <!-- Display phone image -->
+    <div class="column_left">
+      <div class="container_display">
+        <!--Item title info-->
+          <h1 id="product_title"></h1>
+
+        <!--image slideshow-->
+          <br>
+          <div class="slider_container" id = "slider_photos">
+            <img class="slider_pic" id="photo_1" src=""/>
+            <img class="slider_pic" id="photo_2" src=""/>
+            <img class="slider_pic" id="photo_3" src=""/>
+
+            <a class="left_arrow" onclick="plusDivs(-1)">&#10094;</a>
+            <a class="right_arrow" onclick="plusDivs(1)">&#10095;</a>
+          </div>
+          <br><br>
+
+            <!--detailed description-->
+          <h2 id="product_desc"></h2> <br>
+      </div>
+    </div>
+
+    <!-- Display form-control for add to cart -->
+    <br>
+    <div class="column_right">
+      <div class="container_display">
+        <div class="container_cart">
+            <div class="form-control">
+              <p id="product_memory"></p>
+              <p id="product_color"></p>
+              <p id="product_id"></p>
+              <p id="product_price"></p>
+            </div>
+
+            <div id="error_message" style="text-align: left; color: #ff0000"></div>
+
+            <div>
+          <form ACTION="#" id="add_form" METHOD="post">
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="product_detail.js"></script>
+    <script type="text/javascript">
+      var index = 1;
+      var shipping_method = "choice1"
+      showDivs(index);
+
+      function plusDivs(n) {
+        showDivs(index += n);
+      }
+      function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("slider_pic");
+        if (n > x.length) {index = 1}
+        if (n < 1) {index = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        x[index-1].style.display = "block";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #logo-bar {
+      text-align:center;
+      font-size: 50px;
+      background-color: darkgray;
+    }
+    .top_nav{
+      background-color: darkgray;
+      overflow: hidden;
+    }
+    .top_nav a{
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 30px;
+      display: block;
+      text-decoration:none;
+    }
+    .top_nav a:hover {
+      color: lightblue;
+    }
+    .top_nav a.active {
+      background-color: lightblue;
+      color: black;
+    }
+
+    /* Column container */
+    .row {
+      display: block;
+      flex-wrap: wrap;
+    }
+
+    h3 {
+      font-size: 30px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .row {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .column {
+      width:33%;
+      float:left;
+    }
+
+    .card {
+      margin: 8px;
+      box-shadow: 0 5px 6px 0 rgba(0.1, 0.1, 0.1, 0.1);
+    }
+
+    @media (max-width: 800px){
+      .column {
+        width: 45%;
+      }
+    }
+    @media (max-width: 600px){
+      .column {
+        float: none;
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!--top logo bar-->
+<div id="logo-bar">
+  <div id="title">G11 eCommerce</div>
+</div>
+
+<!--    top navigation bar-->
+<div class="top_nav">
+  <a href="index.html">Products</a>
+  <a class="active" href="team.html">Team</a>
+  <a href="about.html">About</a>
+  <a style="float: right" href="view_ordered.html">View ordered</a>
+  <a style="float: right" href="cart.html">Checkout</a>
+</div>
+
+<h2 style="text-align:center">Management Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img style="float:left;width:100%;height:100%;object-fit:cover;" src="images/pid_team/uyentd.png" alt="Uyen Dinh">
+      <div>
+        <h2>Uyen Dinh</h2>
+        <p style="color: gray">Sale Manager</p>
+        <p>uyentd@g11.com</p>
+        </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img style="float:left;width:100%;height:100%;object-fit:cover;" src="images/pid_team/ldkhong.png" alt="Loc Khong">
+      <div>
+        <h2>Loc Khong</h2>
+        <p style="color: gray">Support Manager</p>
+        <p>ldkhong@g11.com</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img style="float:left;width:100%;height:100%;object-fit:cover;" src="images/pid_team/jonjin.png" alt="Jonathan Jin">
+      <div>
+      <h2>Jonathan Jin</h2>
+      <p style="color: gray">Technical Manager</p>
+      <p>jonjin@g11.com</p>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

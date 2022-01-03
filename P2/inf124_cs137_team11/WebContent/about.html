@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About us</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #logo-bar {
+            text-align:center;
+            font-size: 50px;
+            background-color: darkgray;
+        }
+        .top_nav{
+            background-color: darkgray;
+            overflow: hidden;
+        }
+        .top_nav a{
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 30px;
+            display: block;
+            text-decoration:none;
+        }
+        .top_nav a:hover {
+            color: lightblue;
+        }
+        .top_nav a.active {
+            background-color: lightblue;
+            color: black;
+        }
+
+        /* Column container */
+        .row {
+            display: block;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 30px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .row {
+            text-align: left;
+            padding: 20px;
+        }
+
+        @media (max-width: 800px){
+            .column {
+                width: 45%;
+            }
+        }
+        @media (max-width: 600px){
+            .column {
+                float: none;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!--top logo bar-->
+<div id="logo-bar">
+    <div id="title">G11 eCommerce</div>
+</div>
+
+<!--    top navigation bar-->
+<div class="top_nav">
+    <a href="index.html">Products</a>
+    <a href="team.html">Team</a>
+    <a class="active" href="about.html">About</a>
+    <a style="float: right" href="view_ordered.html">View ordered</a>
+    <a style="float: right" href="cart.html">Checkout</a>
+</div>
+
+<div class="row">
+    <h2>About Us</h2>
+    <p>
+        Bringing alive the promise of best product for our customers,
+        G11 ecommerce offers the high quality and most popular smart phone model
+        and excellent service for customer to buy our smart phone in-store and online at g11.com.
+    </p>
+    <h2>FAQ</h2>
+    <p>
+        1. When will my order ship? <br>
+        All orders are process and shipped within one business day, excluding Saturday and Sunday.<br><br>
+        2. How can I track my order? <br>
+        Once the order ships you will receive a shipping confirmation email with a tracking number.<br><br>
+        3. How do I reach customer service?<br>
+        You can reach for help with the contact information found in the Team page, just click above on the navigation bar above. <br><br>
+        4. What is the return policy? <br>
+        All sales are final here!<br><br>
+        5. Are your phones authentic? <br>
+        All phones we carry are 100% authentic and brand new.
+    </p>
+    <img style="float:left;width:100%;height:100%;object-fit:cover;" src="./images/pid_about/about1.png">
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="home_style.css">
+    <title style="text-align: center;">View ordered</title>
+</head>
+
+<body>
+<!--top logo bar-->
+<div id="logo-bar">
+    <div id="title">G11 eCommerce</div>
+</div>
+
+<!--    top navigation bar-->
+<div class="top_nav">
+    <a href="index.html">Products</a>
+    <a href="team.html">Team</a>
+    <a href="about.html">About</a>
+    <a style="float: right" class="active" href="view_ordered.html">View ordered</a>
+    <a style="float: right" href="cart.html">Checkout</a>
+</div>
+
+<form action="#" method="GET" id="email_form">
+    <br>
+    <label for="email">Email</label>
+    <input required type="email" name="email" id="email" placeholder="Enter your email">
+    <input type="submit" value="Show order">
+</form>
+<div id="error_message" style="text-align: center; color: red"></div>
+
+
+<div id = "table_head" style="margin-left: 5%; margin-right: 5%">
+</div>
+
+<!-- Load jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<script src="view_ordered.js"></script>
+</body>
+</html>
