@@ -13,8 +13,9 @@ export default class AddPhone extends Component {
     this.onChangeCategory = this.onChangeCategory.bind(this);
     this.onChangeImageUrl = this.onChangeImageUrl.bind(this);
     this.onChangeNumUnits = this.onChangeNumUnits.bind(this);
-    this.savePhone = this.savePhone.bind(this);
+    //this.savePhone = this.savePhone.bind(this);
     this.newPhone = this.newPhone.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
 
     this.state = {
       id: null,
@@ -27,7 +28,8 @@ export default class AddPhone extends Component {
       image_url: "",
       numUnits: null,
       //published: false,
-      submitted: false
+      submitted: false,
+      error: ""
     };
   }
 
@@ -78,7 +80,7 @@ export default class AddPhone extends Component {
       numUnits: e.target.value
     });
   }
-
+/*
   savePhone() {
     let data = {
       model: this.state.model,
@@ -113,7 +115,7 @@ export default class AddPhone extends Component {
         console.log(e);
       });
   }
-
+*/
   newPhone() {
     this.setState({
       id: null,
@@ -130,9 +132,68 @@ export default class AddPhone extends Component {
     });
   }
 
+  handleValidation () {
+    const { model, color, memory, price, description, category, image_url, numUnits } = this.state;
+    // only each block with generate error
+    if (!model) {
+      this.setState({ error: 'Model can not be empty!' });
+    } else if (!color) {
+      this.setState({ error: 'Color can not be empty!' });
+    } else if (!memory || isNaN(memory)) {
+      this.setState({ error: 'Memory is not valid!' });
+    }else if (!price || isNaN(price)) {
+      this.setState({ error: 'Price is not valid!' });
+    } else if (!description) {
+      this.setState({ error: 'Description can not be empty!' });
+    }else if (!category) {
+      this.setState({ error: 'Category can not be empty!' });
+    }else if (!image_url) {
+      this.setState({ error: 'Image url can not be empty!' });
+    }else if (!numUnits || isNaN(numUnits)) {
+      this.setState({ error: 'Number of units is not valid!' });
+    } else {
+      this.setState({error: ""})
+
+        let data = {
+          model: this.state.model,
+          color: this.state.color,
+          memory: this.state.memory,
+          price: this.state.price,
+          description: this.state.description,
+          category: this.state.category,
+          image_url: this.state.image_url,
+          numUnits: this.state.numUnits
+        };
+
+        PhoneDataService.create(data)
+            .then(response => {
+              this.setState({
+                id: response.data.id,
+                model: response.data.model,
+                color: response.data.color,
+                memory: response.data.memory,
+                price: response.data.price,
+                description: response.data.description,
+                category: response.data.category,
+                image_url: response.data.image_url,
+                numUnits: response.data.numUnits,
+                //published: response.data.published,
+
+                submitted: true
+              });
+              console.log(response.data);
+            })
+            .catch(e => {
+              console.log(e);
+            });
+
+    }
+  }
+
   render() {
     return (
       <div id="border-box" className="submit-form">
+
         {this.state.submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
@@ -147,6 +208,7 @@ export default class AddPhone extends Component {
               <input
                 type="text"
                 className="form-control"
+                placeholder="Enter model"
                 id="model"
                 required
                 value={this.state.model}
@@ -156,10 +218,11 @@ export default class AddPhone extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="color">color</label>
+              <label htmlFor="color">Color</label>
               <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter color"
                   id="color"
                   required
                   value={this.state.color}
@@ -173,6 +236,7 @@ export default class AddPhone extends Component {
               <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter memory"
                   id="memory"
                   required
                   value={this.state.memory}
@@ -186,6 +250,7 @@ export default class AddPhone extends Component {
               <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter price"
                   id="price"
                   required
                   value={this.state.price}
@@ -199,6 +264,7 @@ export default class AddPhone extends Component {
               <input
                 type="text"
                 className="form-control"
+                placeholder="Enter description"
                 id="description"
                 required
                 value={this.state.description}
@@ -212,6 +278,7 @@ export default class AddPhone extends Component {
               <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter category"
                   id="category"
                   required
                   value={this.state.category}
@@ -225,6 +292,7 @@ export default class AddPhone extends Component {
               <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter image url"
                   id="image_url"
                   required
                   value={this.state.image_url}
@@ -238,6 +306,7 @@ export default class AddPhone extends Component {
               <input
                   type="text"
                   className="form-control"
+                  placeholder="Enter number of units"
                   id="numUnits"
                   required
                   value={this.state.numUnits}
@@ -245,12 +314,15 @@ export default class AddPhone extends Component {
                   name="numUnits"
               />
             </div>
-
-            <button onClick={this.savePhone} className="btn btn-success">
+            <button onClick={this.handleValidation} className="btn btn-success">
               Submit
             </button>
           </div>
         )}
+        {(this.state.error !== '')
+            ? <span style={{color: "red"}}>{this.state.error}</span>
+            : ''
+        }
       </div>
     );
   }

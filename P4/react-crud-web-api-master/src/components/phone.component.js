@@ -15,8 +15,9 @@ export default class Phone extends Component {
     this.onChangeNumUnits = this.onChangeNumUnits.bind(this);
     this.getPhone = this.getPhone.bind(this);
     //this.updatePublished = this.updatePublished.bind(this);
-    this.updatePhone = this.updatePhone.bind(this);
+    //this.updatePhone = this.updatePhone.bind(this);
     this.deletePhone = this.deletePhone.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
 
     this.state = {
       currentPhone: {
@@ -173,6 +174,7 @@ export default class Phone extends Component {
   }
 */
 
+  /*
   updatePhone() {
     PhoneDataService.update(
       this.state.currentPhone.id,
@@ -187,6 +189,45 @@ export default class Phone extends Component {
       .catch(e => {
         console.log(e);
       });
+  }
+  */
+
+  handleValidation () {
+    const { currentPhone } = this.state;
+    // only each block with generate error
+    if (!currentPhone.model) {
+      this.setState({ error: 'Model can not be empty!' });
+    } else if (!currentPhone.color) {
+      this.setState({ error: 'Color can not be empty!' });
+    } else if (!currentPhone.memory || isNaN(currentPhone.memory)) {
+      this.setState({ error: 'Memory is not valid!' });
+    }else if (!currentPhone.price || isNaN(currentPhone.price)) {
+      this.setState({ error: 'Price is not valid!' });
+    } else if (!currentPhone.description) {
+      this.setState({ error: 'Description can not be empty!' });
+    }else if (!currentPhone.category) {
+      this.setState({ error: 'Category can not be empty!' });
+    }else if (!currentPhone.image_url) {
+      this.setState({ error: 'Image url can not be empty!' });
+    }else if (!currentPhone.numUnits || isNaN(currentPhone.numUnits)) {
+      this.setState({ error: 'Number of units is not valid!' });
+    } else {
+      this.setState({error: ""})
+
+      PhoneDataService.update(
+          this.state.currentPhone.id,
+          this.state.currentPhone
+      )
+          .then(response => {
+            console.log(response.data);
+            this.setState({
+              message: "The phone was updated successfully!"
+            });
+          })
+          .catch(e => {
+            console.log(e);
+          });
+    }
   }
 
   deletePhone() {
@@ -309,11 +350,16 @@ export default class Phone extends Component {
             <button
               type="submit"
               className="badge badge-success"
-              onClick={this.updatePhone}
+              onClick={this.handleValidation}
             >
               Update
             </button>
-            <p>{this.state.message}</p>
+            <br></br>
+            {(this.state.error !== '')
+                ? <span style={{color: "red"}}>{this.state.error}</span>
+                : ''
+            }
+            <p style={{color: "red"}}>{this.state.message}</p>
           </div>
         ) : (
           <div>
