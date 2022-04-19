@@ -6,22 +6,17 @@ Loc Duc Minh Khong
 
 REQUIREMENTS:
 add-phone.component.js(Add page)
-Satisfy Requirement: 1
 
 phone-list.component.js (Phone List Page)
 phone.coomponent.js(Edit Page)
-Satisfy Requirement: 2
 
 phone.coomponent.js(Edit Page)
-Satisfy Requirement: 3
 
 phone-list.component.js (Phone List Page)
 phone.contoroller.js (Query for phone info from database)
-Satify Requirement: 4
 
 App.js (Styling Name, Color, Styles)
 App.css (Styling Name, Color, Styles)
-Satisfy Requirement: 5
 
 The MyApp and Phone page will be the main starting page which display all products in a phone list columns. Users can select a product and view all information about it. 
 

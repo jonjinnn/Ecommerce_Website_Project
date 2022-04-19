@@ -1,24 +1,17 @@
 Uyen Thuy Phuong Dinh
-
 Jonathan Jin
-
 Loc Duc Minh Khong
 
 index.html (Home page)
-Satisfy Requirement: 1
 
 product_detail.html(Product Detail Page)
-Satisfy Requirement: 2
 
 cart.html (Checkout page)
-Satisfy Requirement: 3,4
 
 view_ordered (View Ordered page)
-Satify Requirement: 1
 
 Deployed Website Link:
 http://3.101.37.212:38234/cs137-spring21-team11/index.html
-Satisfy Requirement: 5
 
 MUST USE UCI VPN on UCIFULL channel to access!
 
